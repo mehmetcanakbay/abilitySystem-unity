@@ -23,6 +23,7 @@ public class AbilityComponent : MonoBehaviour
         }
     }
 
+    //if you need to change the ability, you can use this function
     public void ChangeAbilityGivenIndex(AbilityDataHolder data, int index) {
         if (index > AbilityBases.Count) return;
 
