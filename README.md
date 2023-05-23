@@ -1,6 +1,6 @@
 # Lightweight Ability System for Unity
 
-Lightweight ability system for unity. Easily customizable and provides a good base for game projects that use abilities.
+Lightweight ability system for Unity. Easily customizable and provides a good base for game projects that use abilities.
 
 **Features**
  
