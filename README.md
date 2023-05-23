@@ -11,16 +11,16 @@ Lightweight ability system for unity. Easily customizable and provides a good ba
 
 There are 3 scripts, -AbilityBase, AbilityComponent and  AbilityDataHolder- and these work together to make the system tick.
 
-In short, AbilityBase is the script where the ability logic like cooldowns, what happens when its ready, what happens when its activated etc. happens. This is the system's "logic"
+In short, AbilityBase is the script where ability logic like cooldowns, what happens when its ready, what happens when its activated etc. happens. This is the logic of the system.
 
-AbilityDataHolder is a ScriptableObject, and with overrideable functions, you can write your own ability logic, to then add to AbilityComponent. You can think of this as "logic data"
+AbilityDataHolder is a ScriptableObject, and with overrideable functions, you can write your own ability logic, to then add to AbilityComponent. You can think of this as "logic data holder".
 
 AbilityComponent holds creates and holds AbilityBases, basically its the initializer and maintainer.
 
 -----
-Give a game object AbilityComponent component, then create a script, for this example, I'll call it AbilityDash.cs. This should inherit from AbilityDataHolder. Since **this is a scriptable object**, delete start and update functions, since they wont work.
+Give a game object AbilityComponent component, then create a script. For this example, I'll call it AbilityDash.cs. This should inherit from AbilityDataHolder. Since **this is a scriptable object**, delete start and update functions, since they wont work.
 
-After inheriting the AbilityDataHolder, you can basically override and write logic for every state the ability goes in. These states are 
+After inheriting the AbilityDataHolder, you can basically override and write logic for every state the ability is in. These states are: 
 
  - Ready
  - CheckResources
@@ -61,7 +61,7 @@ public override void CheckResources(GameObject go) {
 }
 ```
 
-After this you can override as many functions as you want to create your own ability. After that, dont forget to add "Create Asset Menu" at the top, which will let you create the SO object itself in editor. This is the final script used in this example project:
+After this you can override as many functions as you want to create your own ability. After that, dont forget to add "Create Asset Menu" at the top, which will let you create the SO object in editor. This is the final script used in this example project:
 
 
 ```c#
@@ -103,15 +103,15 @@ public class AbilityDash : AbilityDataHolder
 }
 ```
 
-After these steps, simply create the Scriptable Object, then append this to the Abilities part of the AbilityComponent. Then set the settings in the scriptable object, press play and you'll see that your ability is working perfectly without problems!
+After these steps, simply create the Scriptable Object, then append this to the Abilities part of the AbilityComponent. Then set the settings in the scriptable object, press play and hopefully you'll see that your ability is working perfectly without any problems!
 
 ## Last Words
 ---
 You can also clone this repository, open the example project and test things out for yourself. (2020.3.3f1 LTS) 
 
-In this repository, I added the ability, and bound stuff like cooldowns to UI. You can get an idea of how all things work by looking at this project.
+In this repository, I added an ability and bound stuff like cooldowns to UI. You can get an idea of how all things work by looking at this project.
 
-One thing to consider is that this is extremely customizable and easy to create more functionality. For example, for this project, I have added a OnCooldownEvent and called this when the ability is on cooldown, and then used this event to update the UI. 
+One thing to consider is that this is extremely customizable and you can easily create more functionality. For example, for this project, I have added an OnCooldownEvent and called this when the ability is on cooldown, and then used this event to update the UI. 
 
 You can also create other events for other states, e.g. when it becomes Ready, you can then send an event, bind that to an UI object and then make the UI sprite pop for a second to let the player know that the ability is ready.
 
